@@ -1,0 +1,27 @@
+syntax = "proto3";
+package main;
+
+message DeviceDataArray {
+    repeated DeviceData DeviceDataItems = 1;
+}
+
+message DeviceData {
+    Guid DeviceId = 1;
+    DateTime DateTime = 2;
+    repeated DeviceValue DeviceValues = 3;
+}
+
+message DeviceValue {
+    repeated bytes Obis = 1;
+    double Value = 2;
+}
+
+message Guid {
+    fixed64 lo = 1; // the first 8 bytes of the guid
+    fixed64 hi = 2; // the second 8 bytes of the guid
+}
+
+message DateTime {
+  string value = 1;
+}
+
